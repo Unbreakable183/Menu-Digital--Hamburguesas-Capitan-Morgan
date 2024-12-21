@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamburguesas - El Pirata Morgan</title>
+    <style>
+        body {
+            background-image: url('fondo.jpg');
+            background-size: 1920px;
+            font-family: Arial, sans-serif;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        header h1 {
+            font-size: 6em; /* Aumentado al doble del tamaño anterior */
+            margin: 0;
+            color: gold; /* Color dorado para el título */
+        }
+
+        header img {
+            width: 1200px;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+        
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+        footer p {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+
+        footer img {
+            margin-top: 20px;
+            width: 600px;
+        }
+        .category {
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente */
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+
+        .category h2 {
+            font-size: 3em;
+            color: gold; /* Color dorado para las categorías */
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+      .category h2 img {
+    width: 640px; /* Cambiado de 40px a 160px para aumentar al cuádruple */
+    vertical-align: middle;
+}
+
+        .product-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+        }
+
+        .product {
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .product img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .product-description {
+            margin: 10px 0;
+            color: white;
+        }
+
+        .product-name {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .product-detail {
+            font-size: 1em;
+        }
+
+        .product-price {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: gold; /* Precios en dorado */
+        }
+
+    </style>
+</head>
+<body>
+<header>
+    <img src="banner.jpg" alt="Logo El Pirata Morgan">
+</header>
+
+<div class="menu-container">
+    <!-- Entradas -->
+    <div class="category">
+        <h2><img src="entradas-icon.jpg" alt="Icono Entradas"></h2>
+        <div class="product-list">
+            <div class="product">
+                <img src="elote-parmesano.jpg" alt="Elote Parmesano">
+                <div class="product-description">
+                    <div class="product-name">Elote Parmesano</div>
+                    <div class="product-detail">Una deliciosa fusión de nuestro elote frito con nuestra única salsa parmesano, parmesano en polvo y picosito tajín.</div>
+                </div>
+                <div class="product-price">$88.00</div>
+            </div>
+            <div class="product">
+                <img src="bites-jalapeno.jpg" alt="Bites de Jalapeño">
+                <div class="product-description">
+                    <div class="product-name">Bites de Jalapeño</div>
+                    <div class="product-detail">Mini Jalapeños rellenos de queso (120g).</div>
+                </div>
+                <div class="product-price">$88.00</div>
+            </div>
+            <div class="product">
+                <img src="palomitas-pollo.jpg" alt="Palomitas de Pollo">
+                <div class="product-description">
+                    <div class="product-name">Palomitas de Pollo</div>
+                    <div class="product-detail">Bañadas en tu salsa de preferencia (45ml).</div>
+                </div>
+                <div class="product-price">$88.00</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ensaladas -->
+    <div class="category">
+        <h2><img src="ensaladas-icon.jpg" alt="Icono Ensaladas"></h2>
+        <div class="product-list">
+            <div class="product">
+                <img src="ensalada-atun.jpg" alt="Ensalada de Atún">
+                <div class="product-description">
+                    <div class="product-name">Ensalada de Atún</div>
+                    <div class="product-detail">Fresca ensalada con lechuga, jitomate, apio, zanahoria y atún (100g). Incluye un aderezo a elegir (90ml).</div>
+                </div>
+                <div class="product-price">$128.00</div>
+            </div>
+            <div class="product">
+                <img src="ensalada-hawaiana.jpg" alt="Ensalada Hawaiana">
+                <div class="product-description">
+                    <div class="product-name">Ensalada Hawaiana</div>
+                    <div class="product-detail">Exquisita mezcla de lechugas frescas (Italiana y Romana), tiras de pechuga de pollo a la plancha, crujientes aros de cebolla y acompañada de la salsa de tu preferencia.</div>
+                </div>
+                <div class="product-price">$198.00</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hotdogs -->
+    <div class="category">
+        <h2><img src="hotdog-icon.jpg" alt="Icono HotDogs"></h2>
+        <div class="product-list">
+            <div class="product">
+                <img src="hotdog-especial.jpg" alt="HotDog Especial con Papas">
+                <div class="product-description">
+                    <div class="product-name">HotDog Especial con Papas</div>
+                    <div class="product-detail">Deliciosa salchicha de pavo, quesos mixtos y nuestra preparación de aderezos a la plancha con cebolla y jalapeños.</div>
+                </div>
+                <div class="product-price">$78.00</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hamburguesas -->
+    <div class="category">
+        <h2><img src="hamburguesas-icon.jpg" alt="Icono Hamburguesas"></h2>
+        <div class="product-list">
+            <div class="product">
+                <img src="hamburguesa-casa.jpg" alt="Hamburguesa de la Casa">
+                <div class="product-description">
+                    <div class="product-name">Hamburguesa de la Casa</div>
+                    <div class="product-detail">Deliciosa carne de res (150g), con una rica fusión de aderezos a la plancha, cebolla, jalapeños y una exquisita mezcla de quesos. *Incluye media orden de papas a la francesa (110g).</div>
+                </div>
+                <div class="product-price">$158.00</div>
+            </div>
+            <div class="product">
+                <img src="hamburguesa-bbq.jpg" alt="Hamburguesa BBQ">
+                <div class="product-description">
+                    <div class="product-name">Hamburguesa BBQ</div>
+                    <div class="product-detail">Hecha con carne de nuestras deliciosas costillas (120g) bañada en salsa BBQ y ensalada de col.</div>
+                </div>
+                <div class="product-price">$158.00</div>
+            </div>
+            <div class="product">
+                <img src="hamburguesa-especial.jpg" alt="Hamburguesa Especial">
+                <div class="product-description">
+                    <div class="product-name">Hamburguesa Especial</div>
+                    <div class="product-detail">Hamburguesa de res (150g), crujientes aros de cebolla, quesos mixtos y un toque de salsa BBQ.</div>
+                </div>
+                <div class="product-price">$168.00</div>
+            </div>
+        </div>
+    <!-- Paquetes -->
+    <div class="category">
+        <h2><img src="paquetes-icon.jpg" alt="Icono Paquetes"></h2>
+        <div class="product-list">
+            <div class="product">
+                <img src="paquete-alitas.jpg" alt="Paquete de Alitas">
+                <div class="product-description">
+                    <div class="product-name">Paquete de Alitas</div>
+                    <div class="product-detail">1 kg de alitas (de 18 a 20 piezas) de 3 sabores, vegetales, 1 porción de papas (450g).</div>
+                </div>
+                <div class="product-price">$398.00</div>
+            </div>
+            <div class="product">
+                <img src="alitas-1kg.jpg" alt="1 Kg de Alitas">
+                <div class="product-description">
+                    <div class="product-name">1 Kg de Alitas / 3 Sabores / 2 Aderezos</div>
+                    <div class="product-detail">Alitas (De 18 a 20 piezas), 2 Aderezos (90ml).</div>
+                </div>
+                <div class="product-price">$385.00</div>
+            </div>
+            <div class="product">
+                <img src="alitas-2kg.jpg" alt="2 Kg de Alitas">
+                <div class="product-description">
+                    <div class="product-name">2 Kg de Alitas / 4 Sabores / 3 Aderezos</div>
+                    <div class="product-detail">Alitas (De 36 a 40 piezas), 3 Aderezos (90ml).</div>
+                </div>
+                <div class="product-price">$688.00</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Postres -->
+    <div class="category">
+        <h2><img src="postres-icon.jpg" alt="Icono Postres"></h2>
+        <div class="product-list">
+            <div class="product">
+                <img src="brownie.jpg" alt="Brownie">
+                <div class="product-description">
+                    <div class="product-name">Brownie</div>
+                    <div class="product-detail">Brownie de chocolate con helado de vainilla (90ml), bañado en chocolate acompañado con una cereza. (Rebanada 105g)</div>
+                </div>
+                <div class="product-price">$98.00</div>
+            </div>
+            <div class="product">
+                <img src="cheesecake.jpg" alt="Cheesecake">
+                <div class="product-description">
+                    <div class="product-name">Cheesecake</div>
+                    <div class="product-detail">Cheesecake cremoso con chocolate y una cereza (Rebanada 160g)</div>
+                </div>
+                <div class="product-price">$108.00</div>
+            </div>
+            <div class="product">
+                <img src="helado.jpg" alt="Helado">
+                <div class="product-description">
+                    <div class="product-name">Helado</div>
+                    <div class="product-detail">2 Bolas de Helado de Vainilla Estilo Americano (180ml)</div>
+                </div>
+                <div class="product-price">$60.00</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bebidas -->
+    <div class="category">
+        <h2><img src="bebidas-icon.jpg" alt="Icono Bebidas"></h2>
+        <div class="product-list">
+            <div class="product">
+                <img src="shazam.jpg" alt="Shazam">
+                <div class="product-description">
+                    <div class="product-name">Shazam</div>
+                    <div class="product-detail">Vodka (40ml), Jarabe de Granada concentrado de frutos rojos, jugo de piña y limón.</div>
+                </div>
+                <div class="product-price">$89.00</div>
+            </div>
+            <div class="product">
+                <img src="peaches.jpg" alt="Peaches">
+                <div class="product-description">
+                    <div class="product-name">Peaches</div>
+                    <div class="product-detail">Ron Blanco (90ml), limonada rosa, jarabe natural, agua mineral y jugo de durazno.</div>
+                </div>
+                <div class="product-price">$89.00</div>
+            </div>
+            <div class="product">
+                <img src="tarro-vampiro.jpg" alt="Tarro Vampiro">
+                <div class="product-description">
+                    <div class="product-name">Tarro Vampiro</div>
+                    <div class="product-detail">Jugo de Limón, Veneno (mezcla de salsas), Clamato, Cerveza de tu agrado y escarchado de sal y tajín.</div>
+                </div>
+                <div class="product-price">$80.00</div>
+            </div>
+            <div class="product">
+                <img src="limonada-rosa.jpg" alt="Limonada Rosa">
+                <div class="product-description">
+                    <div class="product-name">Limonada Rosa</div>
+                    <div class="product-detail">Concentrado de Limonada Rosa y Sprite Zero (470ml)</div>
+                </div>
+                <div class="product-price">$65.00</div>
+            </div>
+            <div class="product">
+                <img src="limonada-electrica.jpg" alt="Limonada Eléctrica">
+                <div class="product-description">
+                    <div class="product-name">Limonada Eléctrica</div>
+                    <div class="product-detail">Concentrado de Mora Azul, Sprite Zero y Agua Mineral (470ml)</div>
+                </div>
+                <div class="product-price">$65.00</div>
+            </div>
+            <div class="product">
+                <img src="clamato-natural.jpg" alt="Clamato Natural">
+                <div class="product-description">
+                    <div class="product-name">Clamato Natural</div>
+                    <div class="product-detail">Veneno (mezcla de salsas), Clamato y Sal (270ml)</div>
+                </div>
+                <div class="product-price">$60.00</div>
+            </div>
+            <div class="product">
+                <img src="mango-smoothie.jpg" alt="Mango Smoothie">
+                <div class="product-description">
+                    <div class="product-name">Mango Smoothie</div>
+                    <div class="product-detail">Concentrado de Mango, Jugo de Piña y un toque de Chamoy (470ml)</div>
+                </div>
+                <div class="product-price">$65.00</div>
+            </div>
+            <div class="product">
+                <img src="limonada.jpg" alt="Limonada">
+                <div class="product-description">
+                    <div class="product-name">Limonada</div>
+                    <div class="product-detail">Limonada Mineral y/o natural (470 ml)</div>
+                </div>
+                <div class="product-price">$52.00</div>
+            </div>
+            <div class="product">
+                <img src="naranjada.jpg" alt="Naranjada">
+                <div class="product-description">
+                    <div class="product-name">Naranjada</div>
+                    <div class="product-detail">Naranjada Mineral y/o natural (470ml)</div>
+                </div>
+                <div class="product-price">$52.00</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+ <footer>
+    <p>Asegura el éxito de tu emprendimiento para conseguir ese negocio próspero que siempre has querido</p>
+    <p>WhatsApp: 5539448685</p>
+    <p>Correo Electrónico: marketing.osme@gmail.com</p>
+    <p>&copy; 2024. Realizado por: Marketing y Publicidad para Emprendedores - OSME.</p>
+    <img src="qr.jpg" alt="Código QR para chatear por WhatsApp">
+</footer>
+</body>
+</html>
+
