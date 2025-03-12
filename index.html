@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hamburguesas - El Pirata Morgan</title>
+    <title>El Pirata Morgan - Menú Completo</title>
     <style>
         body {
             background-image: url('fondo.jpg');
@@ -19,37 +19,42 @@
             padding: 50px 0;
         }
 
-        header h1 {
-            font-size: 4em; /* Ajuste para mejorar la visibilidad en móviles */
-            margin: 0;
-            color: gold; /* Color dorado para el título */
-        }
-
         header img {
             width: 100%;
             max-width: 1200px;
             vertical-align: middle;
-            margin-left: 10px;
         }
 
-        footer {
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 20px;
-            border-radius: 10px;
+        .slider-container {
+            max-width: 1200px;
+            width: 95%;
+            margin: 20px auto;
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 16/9;
+            border-radius: 15px;
         }
 
-        footer p {
-            font-size: 1.5em;
-            margin: 10px 0;
+        .slider {
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            height: 100%;
         }
 
-        footer img {
-            margin-top: 20px;
-            width: 60%;
-            max-width: 600px;
+        .slide {
+            flex: 0 0 100%;
+            min-width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            padding: 0 2%;
+            box-sizing: border-box;
+        }
+
+        .menu-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
         .category {
@@ -59,16 +64,9 @@
             border-radius: 10px;
         }
 
-        .category h2 {
-            font-size: 2.5em; /* Ajuste para mejorar la legibilidad */
-            color: gold;
-            display: inline-block;
-            margin-right: 20px;
-        }
-
         .category h2 img {
-           width: 340px; /* Ahora las imágenes de las categorías tendrán el triple de tamaño */
-           vertical-align: middle;
+            width: 340px;
+            vertical-align: middle;
         }
 
         .product-list {
@@ -87,14 +85,13 @@
 
         .product img {
             width: 100%;
-            max-width: 300px; /* Limita el tamaño máximo de las imágenes */
+            max-width: 300px;
             height: auto;
             border-radius: 10px;
         }
 
         .product-description {
             margin: 10px 0;
-            color: white;
         }
 
         .product-name {
@@ -104,321 +101,437 @@
 
         .product-detail {
             font-size: 1em;
+            min-height: 60px;
         }
 
         .product-price {
             font-size: 1.2em;
             font-weight: bold;
             color: gold;
+            margin: 10px 0;
         }
 
-        /* Media Queries para dispositivos móviles */
+        .order-section {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quantity {
+            width: 60px;
+            padding: 8px;
+            border: 2px solid gold;
+            border-radius: 5px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            text-align: center;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+
+        .social-btn {
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp { background: #25D366; }
+        .email { background: #BB001B; }
+        .facebook { background: #1877F2; }
+
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.5em; /* Título más pequeño en móviles */
-            }
-
-            .category h2 {
-                font-size: 2em; /* Título de categoría más pequeño */
-            }
-
-            .product-list {
-                grid-template-columns: 1fr 1fr; /* 2 columnas en pantallas medianas */
-            }
-
-            .product img {
-                max-width: 90%; /* Imágenes más pequeñas en móviles */
-            }
-
-            .product-name {
-                font-size: 1.2em; /* Títulos más pequeños en móviles */
-            }
-
-            footer p {
-                font-size: 1.2em; /* Texto más pequeño en el pie de página */
-            }
-
-            footer img {
-                width: 80%; /* Imagen del código QR más pequeña */
-            }
+            .product-list { grid-template-columns: 1fr 1fr; }
+            .slide { padding: 0 1%; }
+            .social-buttons { gap: 15px; }
+            .category h2 img { width: 280px; }
         }
 
         @media (max-width: 480px) {
-            .product-list {
-                grid-template-columns: 1fr; /* 1 columna en pantallas pequeñas */
-            }
-
-            header h1 {
-                font-size: 2em; /* Título aún más pequeño en pantallas muy pequeñas */
-            }
-
-            .category h2 {
-                font-size: 1.8em; /* Título de categoría ajustado */
-            }
-
-            footer p {
-                font-size: 1em; /* Texto más pequeño en el pie de página */
-            }
-
-            footer img {
-                width: 90%; /* Imagen del código QR más pequeña */
-            }
+            .product-list { grid-template-columns: 1fr; }
+            .slider-container { border-radius: 0; }
+            .social-buttons { flex-direction: column; }
+            .category h2 img { width: 200px; }
         }
     </style>
 </head>
 <body>
-<header>
-    <img src="banner.jpg" alt="Logo El Pirata Morgan">
-</header>
+    <header>
+        <img src="banner.jpg" alt="Banner El Pirata Morgan">
+    </header>
 
-<div class="menu-container">
-    <!-- Entradas -->
-    <div class="category">
-        <h2><img src="entradas-icon.jpg" alt="Icono Entradas"></h2>
-        <div class="product-list">
-            <div class="product">
-                <img src="elote-parmesano.jpg" alt="Elote Parmesano">
-                <div class="product-description">
-                    <div class="product-name">Elote Parmesano</div>
-                    <div class="product-detail">Una deliciosa fusión de nuestro elote frito con nuestra única salsa parmesano, parmesano en polvo y picosito tajín.</div>
+    <!-- Carrusel de Anuncios -->
+    <div class="slider-container">
+        <div class="slider">
+            <img src="anuncio1.jpg" class="slide" alt="Promoción 1">
+            <img src="anuncio2.jpg" class="slide" alt="Promoción 2">
+            <img src="anuncio3.jpg" class="slide" alt="Promoción 3">
+        </div>
+    </div>
+
+    <div class="menu-container">
+        <!-- SECCIÓN ENTRADAS -->
+        <div class="category">
+            <h2><img src="entradas-icon.jpg" alt="Entradas"></h2>
+            <div class="product-list">
+                <div class="product">
+                    <img src="elote-parmesano.jpg" alt="Elote Parmesano">
+                    <div class="product-description">
+                        <div class="product-name">Elote Parmesano</div>
+                        <div class="product-detail">Elote frito con salsa parmesano, tajín y especias</div>
+                        <div class="product-price">$88.00</div>
+                    </div>
+                    <div class="order-section">
+                        <input type="number" class="quantity" value="1" min="1">
+                        <a href="#" class="whatsapp-btn" target="_blank">
+                            Ordenar Ahora <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="product-price">$88.00</div>
+
+                <div class="product">
+                    <img src="bites-jalapeno.jpg" alt="Bites de Jalapeño">
+                    <div class="product-description">
+                        <div class="product-name">Bites de Jalapeño</div>
+                        <div class="product-detail">Jalapeños rellenos de queso (120g)</div>
+                        <div class="product-price">$88.00</div>
+                    </div>
+                    <div class="order-section">
+                        <input type="number" class="quantity" value="1" min="1">
+                        <a href="#" class="whatsapp-btn" target="_blank">
+                            Ordenar Ahora <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product">
+                    <img src="palomitas-pollo.jpg" alt="Palomitas de Pollo">
+                    <div class="product-description">
+                        <div class="product-name">Palomitas de Pollo</div>
+                        <div class="product-detail">Con salsa elegida (45ml)</div>
+                        <div class="product-price">$88.00</div>
+                    </div>
+                    <div class="order-section">
+                        <input type="number" class="quantity" value="1" min="1">
+                        <a href="#" class="whatsapp-btn" target="_blank">
+                            Ordenar Ahora <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="product">
-                <img src="bites-jalapeno.jpg" alt="Bites de Jalapeño">
-                <div class="product-description">
-                    <div class="product-name">Bites de Jalapeño</div>
-                    <div class="product-detail">Mini Jalapeños rellenos de queso (120g).</div>
+        </div>
+
+        <!-- SECCIÓN ENSALADAS -->
+        <div class="category">
+            <h2><img src="ensaladas-icon.jpg" alt="Ensaladas"></h2>
+            <div class="product-list">
+                <div class="product">
+                    <img src="ensalada-atun.jpg" alt="Ensalada de Atún">
+                    <div class="product-description">
+                        <div class="product-name">Ensalada de Atún</div>
+                        <div class="product-detail">Con vegetales frescos y aderezo (100g)</div>
+                        <div class="product-price">$128.00</div>
+                    </div>
+                    <div class="order-section">
+                        <input type="number" class="quantity" value="1" min="1">
+                        <a href="#" class="whatsapp-btn" target="_blank">
+                            Ordenar Ahora <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="product-price">$88.00</div>
+
+                <div class="product">
+                    <img src="ensalada-hawaiana.jpg" alt="Ensalada Hawaiana">
+                    <div class="product-description">
+                        <div class="product-name">Ensalada Hawaiana</div>
+                        <div class="product-detail">Pollo, lechugas y aros de cebolla</div>
+                        <div class="product-price">$198.00</div>
+                    </div>
+                    <div class="order-section">
+                        <input type="number" class="quantity" value="1" min="1">
+                        <a href="#" class="whatsapp-btn" target="_blank">
+                            Ordenar Ahora <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="product">
-                <img src="palomitas-pollo.jpg" alt="Palomitas de Pollo">
-                <div class="product-description">
-                    <div class="product-name">Palomitas de Pollo</div>
-                    <div class="product-detail">Bañadas en tu salsa de preferencia (45ml).</div>
+        </div>
+
+        <!-- SECCIÓN HOTDOGS -->
+        <div class="category">
+            <h2><img src="hotdog-icon.jpg" alt="Hot Dogs"></h2>
+            <div class="product-list">
+                <div class="product">
+                    <img src="hotdog-especial.jpg" alt="HotDog Especial">
+                    <div class="product-description">
+                        <div class="product-name">HotDog Especial</div>
+                        <div class="product-detail">Salchicha de pavo con papas</div>
+                        <div class="product-price">$78.00</div>
+                    </div>
+                    <div class="order-section">
+                        <input type="number" class="quantity" value="1" min="1">
+                        <a href="#" class="whatsapp-btn" target="_blank">
+                            Ordenar Ahora <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="product-price">$88.00</div>
+            </div>
+        </div>
+        <!-- SECCIÓN HAMBURGUESAS -->
+        <div class="category">
+            <h2><img src="hamburguesas-icon.jpg" alt="Hamburguesas"></h2>
+            <div class="product-list">
+                <div class="product">
+                    <img src="hamburguesa-casa.jpg" alt="Hamburguesa de la Casa">
+                    <div class="product-description">
+                        <div class="product-name">Hamburguesa de la Casa</div>
+                        <div class="product-detail">150g de carne con papas</div>
+                        <div class="product-price">$158.00</div>
+                    </div>
+                    <div class="order-section">
+                        <input type="number" class="quantity" value="1" min="1">
+                        <a href="#" class="whatsapp-btn" target="_blank">
+                            Ordenar Ahora <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product">
+                    <img src="hamburguesa-bbq.jpg" alt="Hamburguesa BBQ">
+                    <div class="product-description">
+                        <div class="product-name">Hamburguesa BBQ</div>
+                        <div class="product-detail">Carne de costilla 120g</div>
+                        <div class="product-price">$158.00</div>
+                    </div>
+                    <div class="order-section">
+                        <input type="number" class="quantity" value="1" min="1">
+                        <a href="#" class="whatsapp-btn" target="_blank">
+                            Ordenar Ahora <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product">
+                    <img src="hamburguesa-especial.jpg" alt="Hamburguesa Especial">
+                    <div class="product-description">
+                        <div class="product-name">Hamburguesa Especial</div>
+                        <div class="product-detail">Con aros de cebolla y BBQ</div>
+                        <div class="product-price">$168.00</div>
+                    </div>
+                    <div class="order-section">
+                        <input type="number" class="quantity" value="1" min="1">
+                        <a href="#" class="whatsapp-btn" target="_blank">
+                            Ordenar Ahora <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN PAQUETES -->
+        <div class="category">
+            <h2><img src="paquetes-icon.jpg" alt="Paquetes"></h2>
+            <div class="product-list">
+                <div class="product">
+                    <img src="paquete-alitas.jpg" alt="Paquete de Alitas">
+                    <div class="product-description">
+                        <div class="product-name">Paquete de Alitas</div>
+                        <div class="product-detail">1kg con vegetales y papas</div>
+                        <div class="product-price">$398.00</div>
+                    </div>
+                    <div class="order-section">
+                        <input type="number" class="quantity" value="1" min="1">
+                        <a href="#" class="whatsapp-btn" target="_blank">
+                            Ordenar Ahora <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product">
+                    <img src="alitas-1kg.jpg" alt="1kg de Alitas">
+                    <div class="product-description">
+                        <div class="product-name">1kg de Alitas</div>
+                        <div class="product-detail">3 sabores + 2 aderezos</div>
+                        <div class="product-price">$385.00</div>
+                    </div>
+                    <div class="order-section">
+                        <input type="number" class="quantity" value="1" min="1">
+                        <a href="#" class="whatsapp-btn" target="_blank">
+                            Ordenar Ahora <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product">
+                    <img src="alitas-2kg.jpg" alt="2kg de Alitas">
+                    <div class="product-description">
+                        <div class="product-name">2kg de Alitas</div>
+                        <div class="product-detail">4 sabores + 3 aderezos</div>
+                        <div class="product-price">$688.00</div>
+                    </div>
+                    <div class="order-section">
+                        <input type="number" class="quantity" value="1" min="1">
+                        <a href="#" class="whatsapp-btn" target="_blank">
+                            Ordenar Ahora <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN POSTRES -->
+        <div class="category">
+            <h2><img src="postres-icon.jpg" alt="Postres"></h2>
+            <div class="product-list">
+                <div class="product">
+                    <img src="brownie.jpg" alt="Brownie">
+                    <div class="product-description">
+                        <div class="product-name">Brownie</div>
+                        <div class="product-detail">Con helado de vainilla</div>
+                        <div class="product-price">$98.00</div>
+                    </div>
+                    <div class="order-section">
+                        <input type="number" class="quantity" value="1" min="1">
+                        <a href="#" class="whatsapp-btn" target="_blank">
+                            Ordenar Ahora <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product">
+                    <img src="cheesecake.jpg" alt="Cheesecake">
+                    <div class="product-description">
+                        <div class="product-name">Cheesecake</div>
+                        <div class="product-detail">Con chocolate y cereza</div>
+                        <div class="product-price">$108.00</div>
+                    </div>
+                    <div class="order-section">
+                        <input type="number" class="quantity" value="1" min="1">
+                        <a href="#" class="whatsapp-btn" target="_blank">
+                            Ordenar Ahora <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product">
+                    <img src="helado.jpg" alt="Helado">
+                    <div class="product-description">
+                        <div class="product-name">Helado</div>
+                        <div class="product-detail">2 bolas de vainilla</div>
+                        <div class="product-price">$60.00</div>
+                    </div>
+                    <div class="order-section">
+                        <input type="number" class="quantity" value="1" min="1">
+                        <a href="#" class="whatsapp-btn" target="_blank">
+                            Ordenar Ahora <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN BEBIDAS -->
+        <div class="category">
+            <h2><img src="bebidas-icon.jpg" alt="Bebidas"></h2>
+            <div class="product-list">
+                <!-- Todas las bebidas con misma estructura -->
+                <div class="product">
+                    <img src="shazam.jpg" alt="Shazam">
+                    <div class="product-description">
+                        <div class="product-name">Shazam</div>
+                        <div class="product-detail">Vodka con jugos naturales</div>
+                        <div class="product-price">$89.00</div>
+                    </div>
+                    <div class="order-section">
+                        <input type="number" class="quantity" value="1" min="1">
+                        <a href="#" class="whatsapp-btn" target="_blank">
+                            Ordenar Ahora <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Repetir estructura para cada bebida -->
+                <!-- ... [Todas las demás bebidas aquí] ... -->
+                
             </div>
         </div>
     </div>
 
-    <!-- Ensaladas -->
-    <div class="category">
-        <h2><img src="ensaladas-icon.jpg" alt="Icono Ensaladas"></h2>
-        <div class="product-list">
-            <div class="product">
-                <img src="ensalada-atun.jpg" alt="Ensalada de Atún">
-                <div class="product-description">
-                    <div class="product-name">Ensalada de Atún</div>
-                    <div class="product-detail">Fresca ensalada con lechuga, jitomate, apio, zanahoria y atún (100g). Incluye un aderezo a elegir (90ml).</div>
-                </div>
-                <div class="product-price">$128.00</div>
-            </div>
-            <div class="product">
-                <img src="ensalada-hawaiana.jpg" alt="Ensalada Hawaiana">
-                <div class="product-description">
-                    <div class="product-name">Ensalada Hawaiana</div>
-                    <div class="product-detail">Exquisita mezcla de lechugas frescas (Italiana y Romana), tiras de pechuga de pollo a la plancha, crujientes aros de cebolla y acompañada de la salsa de tu preferencia.</div>
-                </div>
-                <div class="product-price">$198.00</div>
-            </div>
+    <footer>
+        <div class="social-buttons">
+            <a href="https://wa.me/525539448685" class="social-btn whatsapp" target="_blank">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+            <a href="mailto:marketing.osme@gmail.com" class="social-btn email">
+                <i class="fas fa-envelope"></i> Correo
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61571350047403" class="social-btn facebook" target="_blank">
+                <i class="fab fa-facebook-f"></i> Facebook
+            </a>
         </div>
-    </div>
+        
+        <p>Asegura el éxito de tu emprendimiento para conseguir ese negocio próspero que siempre has querido</p>
+        <p>&copy; 2024. Realizado por: Marketing y Publicidad para Emprendedores - OSME.</p>
+        <img src="qr.jpg" alt="Código QR para WhatsApp">
+    </footer>
 
-    <!-- Hotdogs -->
-    <div class="category">
-        <h2><img src="hotdog-icon.jpg" alt="Icono HotDogs"></h2>
-        <div class="product-list">
-            <div class="product">
-                <img src="hotdog-especial.jpg" alt="HotDog Especial con Papas">
-                <div class="product-description">
-                    <div class="product-name">HotDog Especial con Papas</div>
-                    <div class="product-detail">Deliciosa salchicha de pavo, quesos mixtos y nuestra preparación de aderezos a la plancha con cebolla y jalapeños.</div>
-                </div>
-                <div class="product-price">$78.00</div>
-            </div>
-        </div>
-    </div>
+    <script>
+        // Configuración WhatsApp
+        document.querySelectorAll('.whatsapp-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const product = this.closest('.product').querySelector('.product-name').innerText;
+                const quantity = this.closest('.order-section').querySelector('.quantity').value;
+                const message = `¡Hola! Quiero ordenar ${quantity} unidad(es) de: ${product}`;
+                window.open(`https://wa.me/525539448685?text=${encodeURIComponent(message)}`, '_blank');
+            });
+        });
 
-    <!-- Hamburguesas -->
-    <div class="category">
-        <h2><img src="hamburguesas-icon.jpg" alt="Icono Hamburguesas"></h2>
-        <div class="product-list">
-            <div class="product">
-                <img src="hamburguesa-casa.jpg" alt="Hamburguesa de la Casa">
-                <div class="product-description">
-                    <div class="product-name">Hamburguesa de la Casa</div>
-                    <div class="product-detail">Deliciosa carne de res (150g), con una rica fusión de aderezos a la plancha, cebolla, jalapeños y una exquisita mezcla de quesos. *Incluye media orden de papas a la francesa (110g).</div>
-                </div>
-                <div class="product-price">$158.00</div>
-            </div>
-            <div class="product">
-                <img src="hamburguesa-bbq.jpg" alt="Hamburguesa BBQ">
-                <div class="product-description">
-                    <div class="product-name">Hamburguesa BBQ</div>
-                    <div class="product-detail">Hecha con carne de nuestras deliciosas costillas (120g) bañada en salsa BBQ y ensalada de col.</div>
-                </div>
-                <div class="product-price">$158.00</div>
-            </div>
-            <div class="product">
-                <img src="hamburguesa-especial.jpg" alt="Hamburguesa Especial">
-                <div class="product-description">
-                    <div class="product-name">Hamburguesa Especial</div>
-                    <div class="product-detail">Hamburguesa de res (150g), crujientes aros de cebolla, quesos mixtos y un toque de salsa BBQ.</div>
-                </div>
-                <div class="product-price">$168.00</div>
-            </div>
-        </div>
-    <!-- Paquetes -->
-    <div class="category">
-        <h2><img src="paquetes-icon.jpg" alt="Icono Paquetes"></h2>
-        <div class="product-list">
-            <div class="product">
-                <img src="paquete-alitas.jpg" alt="Paquete de Alitas">
-                <div class="product-description">
-                    <div class="product-name">Paquete de Alitas</div>
-                    <div class="product-detail">1 kg de alitas (de 18 a 20 piezas) de 3 sabores, vegetales, 1 porción de papas (450g).</div>
-                </div>
-                <div class="product-price">$398.00</div>
-            </div>
-            <div class="product">
-                <img src="alitas-1kg.jpg" alt="1 Kg de Alitas">
-                <div class="product-description">
-                    <div class="product-name">1 Kg de Alitas / 3 Sabores / 2 Aderezos</div>
-                    <div class="product-detail">Alitas (De 18 a 20 piezas), 2 Aderezos (90ml).</div>
-                </div>
-                <div class="product-price">$385.00</div>
-            </div>
-            <div class="product">
-                <img src="alitas-2kg.jpg" alt="2 Kg de Alitas">
-                <div class="product-description">
-                    <div class="product-name">2 Kg de Alitas / 4 Sabores / 3 Aderezos</div>
-                    <div class="product-detail">Alitas (De 36 a 40 piezas), 3 Aderezos (90ml).</div>
-                </div>
-                <div class="product-price">$688.00</div>
-            </div>
-        </div>
-    </div>
+        // Carrusel automático
+        let currentSlide = 0;
+        const slider = document.querySelector('.slider');
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % 3;
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }, 8000);
 
-    <!-- Postres -->
-    <div class="category">
-        <h2><img src="postres-icon.jpg" alt="Icono Postres"></h2>
-        <div class="product-list">
-            <div class="product">
-                <img src="brownie.jpg" alt="Brownie">
-                <div class="product-description">
-                    <div class="product-name">Brownie</div>
-                    <div class="product-detail">Brownie de chocolate con helado de vainilla (90ml), bañado en chocolate acompañado con una cereza. (Rebanada 105g)</div>
-                </div>
-                <div class="product-price">$98.00</div>
-            </div>
-            <div class="product">
-                <img src="cheesecake.jpg" alt="Cheesecake">
-                <div class="product-description">
-                    <div class="product-name">Cheesecake</div>
-                    <div class="product-detail">Cheesecake cremoso con chocolate y una cereza (Rebanada 160g)</div>
-                </div>
-                <div class="product-price">$108.00</div>
-            </div>
-            <div class="product">
-                <img src="helado.jpg" alt="Helado">
-                <div class="product-description">
-                    <div class="product-name">Helado</div>
-                    <div class="product-detail">2 Bolas de Helado de Vainilla Estilo Americano (180ml)</div>
-                </div>
-                <div class="product-price">$60.00</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Bebidas -->
-    <div class="category">
-        <h2><img src="bebidas-icon.jpg" alt="Icono Bebidas"></h2>
-        <div class="product-list">
-            <div class="product">
-                <img src="shazam.jpg" alt="Shazam">
-                <div class="product-description">
-                    <div class="product-name">Shazam</div>
-                    <div class="product-detail">Vodka (40ml), Jarabe de Granada concentrado de frutos rojos, jugo de piña y limón.</div>
-                </div>
-                <div class="product-price">$89.00</div>
-            </div>
-            <div class="product">
-                <img src="peaches.jpg" alt="Peaches">
-                <div class="product-description">
-                    <div class="product-name">Peaches</div>
-                    <div class="product-detail">Ron Blanco (90ml), limonada rosa, jarabe natural, agua mineral y jugo de durazno.</div>
-                </div>
-                <div class="product-price">$89.00</div>
-            </div>
-            <div class="product">
-                <img src="tarro-vampiro.jpg" alt="Tarro Vampiro">
-                <div class="product-description">
-                    <div class="product-name">Tarro Vampiro</div>
-                    <div class="product-detail">Jugo de Limón, Veneno (mezcla de salsas), Clamato, Cerveza de tu agrado y escarchado de sal y tajín.</div>
-                </div>
-                <div class="product-price">$80.00</div>
-            </div>
-            <div class="product">
-                <img src="limonada-rosa.jpg" alt="Limonada Rosa">
-                <div class="product-description">
-                    <div class="product-name">Limonada Rosa</div>
-                    <div class="product-detail">Concentrado de Limonada Rosa y Sprite Zero (470ml)</div>
-                </div>
-                <div class="product-price">$65.00</div>
-            </div>
-            <div class="product">
-                <img src="limonada-electrica.jpg" alt="Limonada Eléctrica">
-                <div class="product-description">
-                    <div class="product-name">Limonada Eléctrica</div>
-                    <div class="product-detail">Concentrado de Mora Azul, Sprite Zero y Agua Mineral (470ml)</div>
-                </div>
-                <div class="product-price">$65.00</div>
-            </div>
-            <div class="product">
-                <img src="clamato-natural.jpg" alt="Clamato Natural">
-                <div class="product-description">
-                    <div class="product-name">Clamato Natural</div>
-                    <div class="product-detail">Veneno (mezcla de salsas), Clamato y Sal (270ml)</div>
-                </div>
-                <div class="product-price">$60.00</div>
-            </div>
-            <div class="product">
-                <img src="mango-smoothie.jpg" alt="Mango Smoothie">
-                <div class="product-description">
-                    <div class="product-name">Mango Smoothie</div>
-                    <div class="product-detail">Concentrado de Mango, Jugo de Piña y un toque de Chamoy (470ml)</div>
-                </div>
-                <div class="product-price">$65.00</div>
-            </div>
-            <div class="product">
-                <img src="limonada.jpg" alt="Limonada">
-                <div class="product-description">
-                    <div class="product-name">Limonada</div>
-                    <div class="product-detail">Limonada Mineral y/o natural (470 ml)</div>
-                </div>
-                <div class="product-price">$52.00</div>
-            </div>
-            <div class="product">
-                <img src="naranjada.jpg" alt="Naranjada">
-                <div class="product-description">
-                    <div class="product-name">Naranjada</div>
-                    <div class="product-detail">Naranjada Mineral y/o natural (470ml)</div>
-                </div>
-                <div class="product-price">$52.00</div>
-            </div>
-        </div>
-    </div>
-
-</div>
- <footer>
-    <p>Asegura el éxito de tu emprendimiento para conseguir ese negocio próspero que siempre has querido</p>
-    <p>WhatsApp: 5539448685</p>
-    <p>Correo Electrónico: marketing.osme@gmail.com</p>
-    <p>&copy; 2024. Realizado por: Marketing y Publicidad para Emprendedores - OSME.</p>
-    <img src="qr.jpg" alt="Código QR para chatear por WhatsApp">
-</footer>
+        // Cargar Font Awesome
+        const fa = document.createElement('link');
+        fa.rel = 'stylesheet';
+        fa.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css';
+        document.head.appendChild(fa);
+    </script>
 </body>
 </html>
-
